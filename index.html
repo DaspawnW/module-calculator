@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="calculator">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body ng-controller="CalculatorCtrl">
+    <form name="calculatorForm" novalidate ng-submit="calculatorForm.$valid && save()">
+        <label for="name">Name</label>
+        <input id="name" name="name" ng-model="module.name" ng-required="true">
+
+        <label for="credits">Credits</label>
+        <input id="credits" type="number" name="credits" ng-model="module.credits" ng-required="true">
+
+        <label for="grade">Grade</label>
+        <input id="grade" type="number" name="grade" ng-model="module.grade" ng-required="true">
+
+        <button type="submit">Save</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Credits</th>
+            <th>Grade</th>
+        </tr>
+        <tr module-item="" on-delete="delete($index)" item="item" ng-repeat="item in moduleList"></tr>
+        <tr>
+            <td></td>
+            <td>Sum:</td>
+            <td>{{ sum() | number: 1 }}</td>
+        </tr>
+    </table>
+</body>
+</html>
